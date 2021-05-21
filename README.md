@@ -7,7 +7,9 @@ You can read more about Random Forest Applications for Image Classification [her
 
 
 ### Importance & Challenges/Limitations
-- The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island. The results of the greater analysis, that extends past this script, are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development. Our team faced a few challenges and limitation in developing the script. We aimed to acquires utility scale solar fields using cloudless imagery, which was difficult to find and is only available during certain times. Additionally, we had to determine the appropriate amount of training data to use in order to maximize results without training on too many solar sites. Finally, we had to determine the Random Forest parameters to fine tune the model.
+- The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island. The results of the greater analysis, that extends past this script, are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development. Users can continue the process by following the continued High-Level Methodology detailed on this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html). Additionally, for a more in depth methodology, check out the Tutorial PDF in the Repository. 
+
+- Our team faced a few challenges and limitation in developing the script. We aimed to acquires utility scale solar fields using cloudless imagery, which was difficult to find and is only available during certain times. Additionally, we had to determine the appropriate amount of training data to use in order to maximize results without training on too many solar sites. Finally, we had to determine the Random Forest parameters to fine tune the model.
 
 ### What you will need:
 - A Google Earth Engine Account
@@ -49,6 +51,7 @@ var region = ri.geometry();
 ```
 
 ### 2. Obtain, Crop, and Display the Sentinel-2A Image from May 24, 2020
+- These images are relatively cloudless and are appropriate for the analysis
 ```js
 // Get Sentinel 2a Image from May 24, 2020 and Filter the Bounds to Rhode Island Boundary
 
@@ -73,6 +76,7 @@ Map.addLayer(mosaic,rgbVis, 'RI');
 ```
 
 ### 3. Add the National Land Cover Database Image (NLCD)
+- We won't use this piece in the Random Forest Script, however, if you want to follow the next steps after producing a classified image, find the PDF and Website linked. 
 ```js
 // Process Land Cover: Select Band and Clip to RI using clipToCol Function)
 var clipToCol = function(image){
@@ -224,7 +228,7 @@ Export.image.toDrive({
    fileFormat: 'SHP'
 });
 ```
-# Next Steps
+# Next Steps - Linked Again for Clarity
 - Users can follow the continued High-Level Methodology of this analysis by navigating to this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html)
 - For a more in depth methodology, check out the Tutorial PDF in the Repository.
 
