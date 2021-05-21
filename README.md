@@ -88,7 +88,7 @@ Map.addLayer(final_LC)
 ### 4. Begin the Random Forest Script
 - You may create your own training data or utilize the provided training data in the script linked above
 - Start by Merging the Training Data of Solar and Non-Solar Polygons to create a new combined feature collection
-- Next, select the relevant bands from the Mosaicked Sentinel-2A Image
+- Next, select the relevant bands from the Mosaicked Sentinel-2A Image _**(Blue, NIR, SWIR 1, SWIR 2)**_
 ```js
 //Random Forest Script-------------------------------------------------------------------------------
 
@@ -103,6 +103,7 @@ print(newfc);
 var bands = ["B2", "B8", "B11", "B12"];
 ```
 - Next, split the training data into two sets: Training & Validation
+- I found this ppt to be helpful in learning how to split my data. They walk through an example as well. Navigate [here](https://appliedsciences.nasa.gov/sites/default/files/2020-10/Part2Extent_Final.pdf)
 ```js
 //Split sample data for training and validation
 var sample = newfc.randomColumn();
@@ -135,6 +136,8 @@ var classified = mosaic.select(bands).classify(classifier);
 ```
 
 ### 5. Variable Importance (Variables are the sampled Bands of the Sentinel-2A image)
+- It is important to see how well each band performed in determing the output
+- Which bands are most valuable in determing Solar v. Non-Solar
 ```js
 // The following code will produce Variable Importance Metrics
 var dict = classifier.explain();
