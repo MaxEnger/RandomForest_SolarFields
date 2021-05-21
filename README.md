@@ -77,6 +77,7 @@ Map.addLayer(mosaic,rgbVis, 'RI');
 
 ### 3. Add the National Land Cover Database Image (NLCD)
 - We won't use this piece in the Random Forest Script, however, if you want to follow the next steps after producing a classified image, find the PDF and Website linked. 
+- Additionally, the dashboard in the link in the limitations section will reveal how Land Cover has been impacted by Solar Development in Rhode Island
 ```js
 // Process Land Cover: Select Band and Clip to RI using clipToCol Function)
 var clipToCol = function(image){
