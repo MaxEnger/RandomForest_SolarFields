@@ -7,13 +7,13 @@ You can read more about Random Forest Applications for Image Classification [her
 
 
 ### Importance & Challenges/Limitations
-- The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island. The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development. The challenges of developing a script that acquires utility scale solar fields include finding cloudless imagery, using the appropriate amount of training data, and choosing Random Forest parameters to fine tune the model.
+- The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island. The results of the greater analysis, that extends past this script, are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development. Our team faced a few challenges and limitation in developing the script. We aimed to acquires utility scale solar fields using cloudless imagery, which was difficult to find and is only available during certain times. Additionally, we had to determine the appropriate amount of training data to use in order to maximize results without training on too many solar sites. Finally, we had to determine the Random Forest parameters to fine tune the model.
 
 ### What you will need:
 - A Google Earth Engine Account
 - Google Drive Account to have a location for outputs
 - The Example Script: https://code.earthengine.google.com/79af001194514c38534641632fe4b6e2
-- Training Data for Algorithm to identify Solar v. Non-Solar: Data is located in the Data Folder. Merged Contains both categories.
+- Training Data for Algorithm to identify Solar v. Non-Solar: _**Data is located in the Data Folder. Merged Contains both categories.**_
 
 ### The script should:
 1. Generate a training dataset consisting of 17 polygons of solar fields (including arrays and the dirt edges immediately surrounding the arrays) and 18 non-solar in Rhode Island. Solar has a value of 1 and non-solar has a value of 2.
