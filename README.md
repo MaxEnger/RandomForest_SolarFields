@@ -1,7 +1,9 @@
 # Conducting Image Classification of Utility Scale Solar Fields in Rhode Island using Random Forest in Google Earth Engine
-This tutorial provides users with a step-by-step guide to conduct pixel-based classification of utility scale solar fields using Random Forest within Google Earth Engine. 
+This tutorial provides users with a step-by-step guide to conduct pixel-based classification of utility scale solar fields using Random Forest within Google Earth Engine. More specifically, users will utilize a Random Forest algorithm to classify two classes in the Sentinel-2A imagery: Solar Fields and Non-Solar. 
 
-This tutorial uses random forest because it is a robust machine learning algorithm used to identify target classes in satellite imagery and produces proficient results. For this example, you will utilize a random forest algorithm to classify two classes in the Sentinel-2A imagery: Solar Fields and Non-Solar. 
+The Random Forest algorithm was chosen because it is a robust machine learning algorithm used to identify target classes in satellite imagery and produces proficient results. For this example, you will utilize a Random Forest algorithm to classify two classes in the Sentinel-2A imagery: Solar Fields and Non-Solar. 
+
+You can read more about Random Forest Applications for Image Classification [here](https://www.mdpi.com/2072-4292/8/11/954/htm),[here](https://developers.google.com/earth-engine/apidocs/ee-classifier-smilerandomforest), and [here](https://developers.google.com/earth-engine/guides/classification)
 
 The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
 
@@ -117,9 +119,14 @@ var training = mosaic.sampleRegions({
   scale: 10
 });
 ```
-
-- Classify the Image with the newly developed Classifier
+- Classify the Image with the newly developed Random Forest Classifier that uses 1000 trees. Try using 1,000 and 10,000 trees and see how they differ
 ```js
+// Make a Random Forest classifier and train it
+var classifier = ee.Classifier.smileRandomForest(1000).train({
+      features: training,
+      classProperty: 'landuse',
+      inputProperties: bands
+    });
 // Classify the input imagery.
 var classified = mosaic.select(bands).classify(classifier);
 ```
