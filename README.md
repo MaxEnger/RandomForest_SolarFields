@@ -44,6 +44,8 @@ var region = ri.geometry();
 ### 2 Obtain, Crop, and Display the Sentinel-2A Image from May 24, 2020
 ```js
 // Get Sentinel 2a Image from May 24, 2020 and Filter the Bounds to Rhode Island Boundary
+
+var image = ee.ImageCollection('COPERNICUS/S2_SR');
 var S2 = image.filterDate('2020-05-23', '2020-05-25')
             .filterBounds(ri);
 
@@ -66,6 +68,7 @@ Map.addLayer(mosaic,rgbVis, 'RI');
 ### 3 Add the National Land Cover Database Image (NLCD)
 ```js
 // Process Land Cover: Select Band and Clip to RI (by geometry (region))
+var LC = ee.ImageCollection("USGS/NLCD_RELEASES/2016_REL");
 var final_LC = LC.select('landcover').clip(region);
 ```
 ### 4 Begin the Random Forest Script
