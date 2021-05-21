@@ -23,10 +23,10 @@ Random Forest Classification Image
 Random Forest Classification Band Importance (Variable Importance)
 Random Forest Accuracy Assessment Tables
 
-Data Table
+
 ![dataTable](images/dataTable.PNG)
 
-Data Layers
+The Data Layers should look similar to this:
 ![dataLayers](images/dataLayers.PNG)
 
 ### 1 Getting Started - Selecting a AOI
