@@ -188,6 +188,8 @@ print('Training kappa: ', testAccuracy.kappa());
 ```
 
 - The output of the Results in the Console to the Right should look like this:
+- We see that the SWIR bands performed best in determining Solar v. Non-Solar
+- [This page will tell you a bit more about why SWIR detected the panels](https://www.edmundoptics.com/knowledge-center/application-notes/imaging/what-is-swir/)
 
 ![Results](images/results.PNG)
 
