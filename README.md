@@ -3,7 +3,7 @@ This tutorial provides users with a step-by-step guide to conduct pixel-based cl
 
 The Random Forest algorithm was chosen because it is a robust machine learning algorithm used to identify target classes in satellite imagery and produces proficient results. For this example, you will utilize a Random Forest algorithm to classify two classes in the Sentinel-2A imagery: Solar Fields and Non-Solar. 
 
-You can read more about Random Forest Applications for Image Classification [here](https://www.mdpi.com/2072-4292/8/11/954/htm),[here](https://developers.google.com/earth-engine/apidocs/ee-classifier-smilerandomforest), and [here](https://developers.google.com/earth-engine/guides/classification)
+You can read more about Random Forest Applications for Image Classification [here](https://www.mdpi.com/2072-4292/8/11/954/htm) , [here](https://developers.google.com/earth-engine/apidocs/ee-classifier-smilerandomforest) , and [here](https://developers.google.com/earth-engine/guides/classification)
 
 The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
 
