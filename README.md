@@ -1,5 +1,5 @@
 # Conducting Image Classification of Utility Scale Solar Fields in Rhode Island using Random Forest in Google Earth Engine
-This tutorial provides users with a step-by-step guide to conduct pixel-based classification of utility scale solar fields using Random Forest & Google Earth Engine. This tutorial uses random forest because it is a robust machine learning algorithm used to identify target classes in satellite imagery. For this example, you will utilize a random forest algorithm to classify two classes in the Sentinel-2A imagery: Solar Fields and Non-Solar. The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
+This tutorial provides users with a step-by-step guide to conduct pixel-based classification of utility scale solar fields using Random Forest within Google Earth Engine. This tutorial uses random forest because it is a robust machine learning algorithm used to identify target classes in satellite imagery and produces proficient results. For this example, you will utilize a random forest algorithm to classify two classes in the Sentinel-2A imagery: Solar Fields and Non-Solar. The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
 
 ### Why is this important
 The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island.
@@ -8,6 +8,7 @@ The purpose of this project was to design a free and open-source remote sensing 
 - A Google Earth Engine Account
 - Google Drive Account to have a location for outputs
 - The Example Script: https://code.earthengine.google.com/79af001194514c38534641632fe4b6e2
+- Training Data for Algorithm to identify Solar v. Non-Solar: Data is located in the Data Folder. Merged Contains both categories.
 
 ### The script should:
 1. Generate a training dataset consisting of 17 polygons of solar fields (including arrays and the dirt edges immediately surrounding the arrays) and 18 non-solar in Rhode Island. Solar has a value of 1 and non-solar has a value of 2.
@@ -206,7 +207,8 @@ Export.image.toDrive({
 ```
 
 
-
+# Next Steps
+Users can follow the continued methodology of this analysis by navigating to this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html)
 
 
 
