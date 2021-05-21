@@ -17,7 +17,7 @@ You can read more about Random Forest Applications for Image Classification [her
 
 ### The script should:
 1. Generate a training dataset consisting of 17 polygons of solar fields (including arrays and the dirt edges immediately surrounding the arrays) and 18 non-solar in Rhode Island. Solar has a value of 1 and non-solar has a value of 2.
-2. Modify the random forest algorithm so that is trained for 1,000 iterations using the most valuable electromagnetic bands for detecting solar arrays: Blue, Near-Infrared, Shortwave Infrared-1, Shortwave Infrared-2. 
+2. Modify the Random Forest algorithm so that is trained for 1,000 iterations using the most valuable electromagnetic bands for detecting solar arrays: **Blue, Near-Infrared, Shortwave Infrared-1, Shortwave Infrared-2**. 
 3. Split the data: 80% of the samples should be used to train the algorithm and 20% of samples were used to test the algorithm. 
 4. Apply the trained model to the entire Sentinel-2A scene to produce a hard classification of solar fields and non-solar. The output from the random forest classification is a raster layer of the hard classification. 
 
