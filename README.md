@@ -36,7 +36,7 @@ The Data Layers should look similar to this:
 
 ![dataLayers](images/dataLayers.PNG)
 
-### 1. Getting Started - Selecting a AOI
+# 1. Getting Started - Selecting a AOI
 - The first step is to navigate to the state of Rhode Island in the Google Earth Engine Map Viewer.
 - Import Tiger 2018 State Boundaries using the code snippet below
 ```js
