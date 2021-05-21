@@ -22,9 +22,9 @@ You can read more about Random Forest Applications for Image Classification [her
 4. Apply the trained model to the entire Sentinel-2A scene to produce a hard classification of solar fields and non-solar. The output from the random forest classification is a raster layer of the hard classification. 
 
 ### Data & Desired Outputs:
-- Tiger 2018 US Census State Boundaries
-- Sentinel 2a Mosaicked Image
-- National Land Cover Database Image
+- [Tiger 2018 US Census State Boundaries](https://developers.google.com/earth-engine/datasets/catalog/TIGER_2018_States)
+- [Sentinel 2a Mosaicked Image](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR)
+- [National Land Cover Database Image](https://developers.google.com/earth-engine/datasets/catalog/USGS_NLCD_RELEASES_2016_REL)
 - Random Forest Classification Image
 - Random Forest Classification Band Importance (Variable Importance)
 - Random Forest Accuracy Assessment Tables
