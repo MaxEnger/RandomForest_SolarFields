@@ -239,3 +239,6 @@ Export.image.toDrive({
 
 # Acknowledgements
 - This project was led by Maxwell Enger, Emily Evenden, and John Rogan
+
+# Contact
+- Max Enger: enger.max.1@gmail.com
