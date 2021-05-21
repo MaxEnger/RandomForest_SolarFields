@@ -107,8 +107,8 @@ var validationdata = sample.filter(ee.Filter.gte('random', split));
 ```
 - Begin Training the Data with the New Feature Collection. 
 - Landuse is the property that defines how each feature in the collection is categorized (i.e Solar v. Non-Solar)
-- The scale is set to 10 because the Sentinel-2A image's resolution is 10m (exception: SWIR Bands are 20m, so we will sample those bands at 20m.
-- This code does not resample the pixel size)
+- The scale is set to 10 because the Sentinel-2A image's resolution is 10m 
+- Exception: SWIR Bands are 20m, so we will sample those bands at 20m. This code does not resample the pixel size
 ```js
 // Define the bands to be used to train your data
 var training = mosaic.sampleRegions({
@@ -128,6 +128,7 @@ var classifier = ee.Classifier.smileRandomForest(1000).train({
 // Classify the input imagery.
 var classified = mosaic.select(bands).classify(classifier);
 ```
+
 ### 5. Variable Importance (Variables are the sampled Bands of the Sentinel-2A image)
 ```js
 // The following code will produce Variable Importance Metrics
@@ -155,6 +156,11 @@ var palette =['0000FF', 'ffa500'];
 //Display Classification
 Map.addLayer(classified, {min: 1, max: 2}, 'RF classification');
 ```
+- The output of the Classified Image should look like this:
+
+![Random Forest Output](images/RF_output.PNG)
+
+
 ### 7. Conduct the Accuracy Assessment
 - Validate using the split data (20% left out for training)
 - Generate A Classification Error Matrix
@@ -172,6 +178,10 @@ print('Error matrix: ', testAccuracy);
 print('Validation overall accuracy: ', testAccuracy.accuracy());
 print('Training kappa: ', testAccuracy.kappa());
 ```
+
+- The output of the Results in the Console to the Right should look like this:
+
+![Results](images/results.PNG)
 
 ### 8. Export the Products (Sentinel-2A Image, Land Cover Image, and Classified Image)
 - Additionally, there is an export for the merged feature class of Solar and Non-Solar
