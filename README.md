@@ -1,5 +1,9 @@
 # Conducting Image Classification of Utility Scale Solar Fields in Rhode Island using Random Forest in Google Earth Engine
-This tutorial provides users with a step-by-step guide to conduct pixel-based classification of utility scale solar fields using Random Forest within Google Earth Engine. This tutorial uses random forest because it is a robust machine learning algorithm used to identify target classes in satellite imagery and produces proficient results. For this example, you will utilize a random forest algorithm to classify two classes in the Sentinel-2A imagery: Solar Fields and Non-Solar. The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
+This tutorial provides users with a step-by-step guide to conduct pixel-based classification of utility scale solar fields using Random Forest within Google Earth Engine. 
+
+This tutorial uses random forest because it is a robust machine learning algorithm used to identify target classes in satellite imagery and produces proficient results. For this example, you will utilize a random forest algorithm to classify two classes in the Sentinel-2A imagery: Solar Fields and Non-Solar. 
+
+The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
 
 ### Why is this important
 The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island.
@@ -93,7 +97,7 @@ print(newfc);
 // Now select the bands from the Sentinel-2A image to be used for training
 var bands = ["B2", "B8", "B11", "B12"];
 ```
-Next, split the training data into two sets: Training & Validation
+- Next, split the training data into two sets: Training & Validation
 ```js
 //Split sample data for training and validation
 var sample = newfc.randomColumn();
@@ -101,7 +105,10 @@ var split = 0.8;  // Roughly 80% training, 20% testing.
 var training = sample.filter(ee.Filter.lt('random', split));
 var validationdata = sample.filter(ee.Filter.gte('random', split));
 ```
-Begin Training the Data with the New Feature Collection. Landuse is the property that defines how each feature in the collection is categorized (i.e Solar v. Non-Solar) The scale is set to 10 because the Sentinel-2A image's resolution is 10m (exception: SWIR Bands are 20m, so we will sample those bands at 20m. This code does not resample the pixel size)
+- Begin Training the Data with the New Feature Collection. 
+- Landuse is the property that defines how each feature in the collection is categorized (i.e Solar v. Non-Solar)
+- The scale is set to 10 because the Sentinel-2A image's resolution is 10m (exception: SWIR Bands are 20m, so we will sample those bands at 20m.
+- This code does not resample the pixel size)
 ```js
 // Define the bands to be used to train your data
 var training = mosaic.sampleRegions({
@@ -111,7 +118,7 @@ var training = mosaic.sampleRegions({
 });
 ```
 
-Classify the Image with the newly developed Classifier
+- Classify the Image with the newly developed Classifier
 ```js
 // Classify the input imagery.
 var classified = mosaic.select(bands).classify(classifier);
@@ -208,7 +215,10 @@ Export.image.toDrive({
 
 
 # Next Steps
-Users can follow the continued methodology of this analysis by navigating to this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html)
+- Users can follow the continued methodology of this analysis by navigating to this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html)
+
+# Acknowledgements
+- This project was led by Maxwell Enger, Emily Evenden, and John Rogan
 
 
 
