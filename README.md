@@ -233,6 +233,10 @@ Export.image.toDrive({
    fileFormat: 'SHP'
 });
 ```
+# Results
+- As you can see, there are not 524 Solar Fields in Rhode Island, however, there are still plenty being developed. The script created for this analysis is complete, but can be further adjusted in other softwares like ArcGIS to filter the pixel noise. There are lots of small pixels that may have captured roads, roofs, and barren areas as solar fields, so filtering the data with a Filter Tool (ArcGIS) may help produce a more accurate and realistic result. 
+- If you desire to improve your result, please look below and follow the secondary methodology to improve your results using Segemenation and Zonal Statistics
+
 # Next Steps - Linked Again for Clarity
 - Users can follow the continued High-Level Methodology of this analysis by navigating to this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html)
 - For a more in depth methodology, check out the Tutorial PDF in the Repository.
