@@ -25,7 +25,7 @@ You can read more about Random Forest Applications for Image Classification [her
 
 ### Data & Desired Outputs:
 - [Tiger 2018 US Census State Boundaries](https://developers.google.com/earth-engine/datasets/catalog/TIGER_2018_States)
-- [Sentinel 2a Mosaicked Image](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR)
+- [Sentinel-2A Mosaicked Image](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR)
 - [National Land Cover Database Image](https://developers.google.com/earth-engine/datasets/catalog/USGS_NLCD_RELEASES_2016_REL)
 - Random Forest Classification Image
 - Random Forest Classification Band Importance (Variable Importance)
