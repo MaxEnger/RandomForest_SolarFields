@@ -8,11 +8,13 @@
 
 
 // Filter to Rhode Island
+var states = ee.FeatureCollection("TIGER/2018/States");
 var ri = states.filter(ee.Filter.eq('NAME', 'Rhode Island'));
 var region = ri.geometry();
-//Map.addLayer(ri);
+Map.addLayer(ri);
 
 // Get Sentinel 2a Image from May 24, 2020 and Filter to Rhode Island Boundary
+var image = ee.ImageCollection("COPERNICUS/S2_SR");
 var S2 = image.filterDate('2020-05-23', '2020-05-25')
             .filterBounds(ri);
 
@@ -34,7 +36,8 @@ Map.addLayer(mosaic,rgbVis, 'RI');
 
 
 // Process Land Cover: Select Band and Clip to RI (by geometry (region))
-//var final_LC = LC.select('landcover').clip(region);
+var LC = ee.ImageCollection("USGS/NLCD_RELEASES/2016_REL");
+var final_LC = LC.select('landcover').clip(region);
 
 //Random Forest Script-------------------------------------------------------------------------------
 
