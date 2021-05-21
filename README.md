@@ -33,12 +33,12 @@ You can read more about Random Forest Applications for Image Classification [her
 ![dataTable](images/dataTable.PNG)
 
 The Data Layers should look similar to this:
+
 ![dataLayers](images/dataLayers.PNG)
 
 ### 1. Getting Started - Selecting a AOI
 - The first step is to navigate to the state of Rhode Island in the Google Earth Engine Map Viewer.
 - Import Tiger 2018 State Boundaries using the code snippet below
-
 ```js
 // Filter to Rhode Island
 var states = ee.FeatureCollection('TIGER/2018/States');
@@ -72,7 +72,6 @@ Map.addLayer(mosaic,rgbVis, 'RI');
 ```
 
 ### 3. Add the National Land Cover Database Image (NLCD)
-```js
 ```js
 // Process Land Cover: Select Band and Clip to RI using clipToCol Function)
 var clipToCol = function(image){
@@ -129,7 +128,6 @@ var classifier = ee.Classifier.smileRandomForest(1000).train({
 // Classify the input imagery.
 var classified = mosaic.select(bands).classify(classifier);
 ```
-
 ### 5. Variable Importance (Variables are the sampled Bands of the Sentinel-2A image)
 ```js
 // The following code will produce Variable Importance Metrics
@@ -150,7 +148,6 @@ var chart =
 
 print(chart); 
 ```
-
 ### 6. Display the Random Forest Classified Image
 ```js
 var palette =['0000FF', 'ffa500'];
@@ -158,12 +155,10 @@ var palette =['0000FF', 'ffa500'];
 //Display Classification
 Map.addLayer(classified, {min: 1, max: 2}, 'RF classification');
 ```
-
 ### 7. Conduct the Accuracy Assessment
 - Validate using the split data (20% left out for training)
 - Generate A Classification Error Matrix
 - Provide Classification Accuracy
-
 ```js
 // Conduct the accuracy Accessment
 var validation = classified.sampleRegions({
@@ -218,8 +213,6 @@ Export.image.toDrive({
    fileFormat: 'SHP'
 });
 ```
-
-
 # Next Steps
 - Users can follow the continued methodology of this analysis by navigating to this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html)
 
