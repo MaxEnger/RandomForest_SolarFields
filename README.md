@@ -23,7 +23,6 @@ Random Forest Classification Image
 Random Forest Classification Band Importance (Variable Importance)
 Random Forest Accuracy Assessment Tables
 
-Your First Products should look similar to this:
 Data Table
 ![dataTable](images/dataTable.PNG)
 
