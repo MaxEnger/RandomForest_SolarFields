@@ -5,10 +5,9 @@ The Random Forest algorithm was chosen because it is a robust machine learning a
 
 You can read more about Random Forest Applications for Image Classification [here](https://www.mdpi.com/2072-4292/8/11/954/htm) , [here](https://developers.google.com/earth-engine/apidocs/ee-classifier-smilerandomforest) , and [here](https://developers.google.com/earth-engine/guides/classification)
 
-The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
 
 ### Why is this important
-The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island.
+The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island. The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
 
 ### What you will need:
 - A Google Earth Engine Account
