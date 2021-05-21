@@ -89,7 +89,9 @@ Map.addLayer(final_LC)
 ### 4. Begin the Random Forest Script
 - You may create your own training data or utilize the provided training data in the script linked above
 - Start by Merging the Training Data of Solar and Non-Solar Polygons to create a new combined feature collection
+- The merged polygons will have a 'landuse' property associated with them - this is what distinguishes a polygon as Solar or Non-Solar
 - Next, select the relevant bands from the Mosaicked Sentinel-2A Image _**(Blue, NIR, SWIR 1, SWIR 2)**_
+- Your Classification, if used for other land use, may require using different bands (investigate accordingly)
 ```js
 //Random Forest Script-------------------------------------------------------------------------------
 
@@ -104,6 +106,8 @@ print(newfc);
 var bands = ["B2", "B8", "B11", "B12"];
 ```
 - Next, split the training data into two sets: Training & Validation
+- Data partioning for Random Forest can be done in a few different permutations - we use 80/20. 
+- 80% is used for Training the data and 20% is used for Testing (Validation). You may have luck with 70/30. Try both.
 - I found this ppt to be helpful in learning how to split my data. They walk through an example as well. Navigate [here](https://appliedsciences.nasa.gov/sites/default/files/2020-10/Part2Extent_Final.pdf)
 ```js
 //Split sample data for training and validation
@@ -235,8 +239,17 @@ Export.image.toDrive({
 });
 ```
 # Results
-- As you can see, there are not 524 Solar Fields in Rhode Island, however, there are still plenty being developed. The script created for this analysis is complete, but can be further adjusted in other softwares like ArcGIS to filter the pixel noise. There are lots of small pixels that may have captured roads, roofs, and barren areas as solar fields, so filtering the data with a Filter Tool (ArcGIS) may help produce a more accurate and realistic result. 
+- Both SWIR bands were most successful in determining Solar v. Non-Solar
+- As you can see, there are not 524 Solar Fields in Rhode Island, however, there are still plenty being developed. The script created for this analysis is complete, but can be further adjusted in other softwares like ArcGIS to filter the pixel noise. There are lots of small pixels that may have captured roads, roofs, and barren areas as solar fields, so filtering the data with a Filter Tool (ArcGIS) may help produce a more accurate and realistic result. Alternatively, Terrset has a module that filters as well. See the snapshot below.
 - If you desire to improve your result, please look below and follow the secondary methodology to improve your results using Segemenation and Zonal Statistics
+
+
+![Results](images/arcgis.PNG)
+
+
+
+![Results](images/terrset.PNG)
+
 
 # Next Steps - Linked Again for Clarity
 - Users can follow the continued High-Level Methodology of this analysis by navigating to this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html)
