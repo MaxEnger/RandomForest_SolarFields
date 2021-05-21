@@ -224,7 +224,8 @@ Export.image.toDrive({
 });
 ```
 # Next Steps
-- Users can follow the continued methodology of this analysis by navigating to this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html)
+- Users can follow the continued High-Level Methodology of this analysis by navigating to this page: [Clark University Solar Field Project](https://maxenger.github.io/solar/Storymap.html)
+- For a more in depth methodology, check out the Tutorial PDF in the Repository.
 
 # Acknowledgements
 - This project was led by Maxwell Enger, Emily Evenden, and John Rogan
