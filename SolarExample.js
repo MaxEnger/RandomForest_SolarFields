@@ -23,28 +23,24 @@ print(S2);
 
 // Mosaic the Image to stitch all parts and select relevant Bands
 var mosaic = S2.mosaic().clip(ri).select("B2", "B3", "B4", "B8", "B11", "B12");
-
 // Visualization Parameters
 var rgbVis = {
   min: 0.0,
   max: 3000,
   bands: [ 'B4', 'B3', 'B2'],
 };
-
 Map.addLayer(mosaic,rgbVis, 'RI');
 
-
-
-// Process Land Cover: Select Band and Clip to RI (by geometry (region))
-var LC = ee.ImageCollection("USGS/NLCD_RELEASES/2016_REL");
-var final_LC = LC.select('landcover').clip(region);
+// Process Land Cover: Select Band and Clip to RI using clipToCol Function)
+var clipToCol = function(image){
+  return image.clip(ri);
+};
+var final_LC = LC.select('landcover').map(clipToCol)
+Map.addLayer(final_LC)
 
 //Random Forest Script-------------------------------------------------------------------------------
 
 //Merge Feature Collections
-Map.addLayer(solar)
-Map.addLayer(non_solar)
-
 var newfc = solar.merge(non_solar);
 print(newfc);
 
@@ -109,7 +105,6 @@ print('Error matrix: ', testAccuracy);
 print('Validation overall accuracy: ', testAccuracy.accuracy());
 print('Training kappa: ', testAccuracy.kappa());
 
-
 //---------------------------------------------------------------------------------------
 
 //Export the Land Cover image, specifying scale and region.
@@ -141,6 +136,12 @@ print('Training kappa: ', testAccuracy.kappa());
 //   region: ri,
 //   crs: 'EPSG:4326',
 //   fileFormat: 'GeoTIFF'
+// });
+
+// Export.table.toDrive({
+//   collection: newfc,
+//   description:'merged',
+//   fileFormat: 'SHP'
 // });
 
 
