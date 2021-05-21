@@ -67,9 +67,13 @@ Map.addLayer(mosaic,rgbVis, 'RI');
 
 ### 3. Add the National Land Cover Database Image (NLCD)
 ```js
-// Process Land Cover: Select Band and Clip to RI (by geometry (region))
-var LC = ee.ImageCollection("USGS/NLCD_RELEASES/2016_REL");
-var final_LC = LC.select('landcover').clip(region);
+```js
+// Process Land Cover: Select Band and Clip to RI using clipToCol Function)
+var clipToCol = function(image){
+  return image.clip(ri);
+};
+var final_LC = LC.select('landcover').map(clipToCol)
+Map.addLayer(final_LC)
 ```
 ### 4. Begin the Random Forest Script
 - You may create your own training data or utilize the provided training data in the script linked above
