@@ -5,9 +5,9 @@ This tutorial provides users with a step-by-step guide to conduct pixel-based cl
 The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island.
 
 ### What you will need:
-A Google Earth Engine Account
-Google Drive Account to have a location for outputs
-The Example Script: https://code.earthengine.google.com/79af001194514c38534641632fe4b6e2
+- A Google Earth Engine Account
+- Google Drive Account to have a location for outputs
+- The Example Script: https://code.earthengine.google.com/79af001194514c38534641632fe4b6e2
 
 ### The script should:
 1. Generate a training dataset consisting of 17 polygons of solar fields (including arrays and the dirt edges immediately surrounding the arrays) and 18 non-solar in Rhode Island. Solar has a value of 1 and non-solar has a value of 2.
@@ -16,12 +16,12 @@ The Example Script: https://code.earthengine.google.com/79af001194514c3853464163
 4. Apply the trained model to the entire Sentinel-2A scene to produce a hard classification of solar fields and non-solar. The output from the random forest classification is a raster layer of the hard classification. 
 
 ### Data & Desired Outputs:
-Tiger 2018 US Census State Boundaries
-Sentinel 2a Mosaicked Image
-National Land Cover Database Image
-Random Forest Classification Image
-Random Forest Classification Band Importance (Variable Importance)
-Random Forest Accuracy Assessment Tables
+- Tiger 2018 US Census State Boundaries
+- Sentinel 2a Mosaicked Image
+- National Land Cover Database Image
+- Random Forest Classification Image
+- Random Forest Classification Band Importance (Variable Importance)
+- Random Forest Accuracy Assessment Tables
 
 
 ![dataTable](images/dataTable.PNG)
@@ -29,7 +29,7 @@ Random Forest Accuracy Assessment Tables
 The Data Layers should look similar to this:
 ![dataLayers](images/dataLayers.PNG)
 
-### 1 Getting Started - Selecting a AOI
+### 1. Getting Started - Selecting a AOI
 - The first step is to navigate to the state of Rhode Island in the Google Earth Engine Map Viewer.
 - Then Import Tiger 2018 State Boundaries using the code snippet below
 
@@ -41,7 +41,7 @@ var region = ri.geometry();
 //Map.addLayer(ri);
 ```
 
-### 2 Obtain, Crop, and Display the Sentinel-2A Image from May 24, 2020
+### 2. Obtain, Crop, and Display the Sentinel-2A Image from May 24, 2020
 ```js
 // Get Sentinel 2a Image from May 24, 2020 and Filter the Bounds to Rhode Island Boundary
 
@@ -65,17 +65,16 @@ var rgbVis = {
 Map.addLayer(mosaic,rgbVis, 'RI');
 ```
 
-### 3 Add the National Land Cover Database Image (NLCD)
+### 3. Add the National Land Cover Database Image (NLCD)
 ```js
 // Process Land Cover: Select Band and Clip to RI (by geometry (region))
 var LC = ee.ImageCollection("USGS/NLCD_RELEASES/2016_REL");
 var final_LC = LC.select('landcover').clip(region);
 ```
-### 4 Begin the Random Forest Script
+### 4. Begin the Random Forest Script
 - You may create your own training data or utilize the provided training data in the script linked above
 - Start by Merging the Training Data of Solar and Non-Solar Polygons to create a new combined feature collection
 - Next, select the relevant bands from the Mosaicked Sentinel-2A Image
-
 ```js
 //Random Forest Script-------------------------------------------------------------------------------
 
@@ -97,7 +96,6 @@ var split = 0.8;  // Roughly 80% training, 20% testing.
 var training = sample.filter(ee.Filter.lt('random', split));
 var validationdata = sample.filter(ee.Filter.gte('random', split));
 ```
-
 Begin Training the Data with the New Feature Collection. Landuse is the property that defines how each feature in the collection is categorized (i.e Solar v. Non-Solar) The scale is set to 10 because the Sentinel-2A image's resolution is 10m (exception: SWIR Bands are 20m, so we will sample those bands at 20m. This code does not resample the pixel size)
 ```js
 // Define the bands to be used to train your data
@@ -114,7 +112,7 @@ Classify the Image with the newly developed Classifier
 var classified = mosaic.select(bands).classify(classifier);
 ```
 
-### 5 Variable Importance (Variables are the sampled Bands of the Sentinel-2A image)
+### 5. Variable Importance (Variables are the sampled Bands of the Sentinel-2A image)
 ```js
 // The following code will produce Variable Importance Metrics
 var dict = classifier.explain();
@@ -135,7 +133,7 @@ var chart =
 print(chart); 
 ```
 
-### 6 Display the Random Forest Classified Image
+### 6. Display the Random Forest Classified Image
 ```js
 var palette =['0000FF', 'ffa500'];
 
@@ -143,7 +141,7 @@ var palette =['0000FF', 'ffa500'];
 Map.addLayer(classified, {min: 1, max: 2}, 'RF classification');
 ```
 
-### Conduct the Accuracy Assessment
+### 7. Conduct the Accuracy Assessment
 - Validate using the split data (20% left out for training)
 - Generate A Classification Error Matrix
 - Provide Classification Accuracy
@@ -162,7 +160,8 @@ print('Validation overall accuracy: ', testAccuracy.accuracy());
 print('Training kappa: ', testAccuracy.kappa());
 ```
 
-### Export the Products (Sentinel-2A Image, Land Cover Image, and Classified Image)
+### 8. Export the Products (Sentinel-2A Image, Land Cover Image, and Classified Image)
+- Additionally, there is an export for the merged feature class of Solar and Non-Solar
 ```js
 // Export the Sentinel-2A Mosaicked image, specifying scale and region.
 Export.image.toDrive({
@@ -193,9 +192,14 @@ Export.image.toDrive({
   crs: 'EPSG:4326',
   fileFormat: 'GeoTIFF'
 });
+
+// Export the Merged Feature Class to hold on to
+ Export.table.toDrive({
+   collection: newfc,
+   description:'merged',
+   fileFormat: 'SHP'
+});
 ```
-
-
 
 
 
