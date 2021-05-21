@@ -7,7 +7,7 @@ You can read more about Random Forest Applications for Image Classification [her
 
 
 ### Why is this important
-The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island. The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
+- The purpose of this project was to design a free and open-source remote sensing methodology to identify utility-scale solar fields and monitor subsequent land cover conversion in Rhode Island. The results of this project are intended to inform stakeholders about the rate of deforestation in Rhode Island due to fast-paced solar field development.
 
 ### What you will need:
 - A Google Earth Engine Account
